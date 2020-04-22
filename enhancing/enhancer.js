@@ -10,16 +10,25 @@ function succeed(item) {
 // If the item enhancement level is 20, the enhancement level is not changed.
 // The durability of the item is not changed.
   console.log('Success Item:', item);
-  if (item.enhancement < 20) {
-    item.enhancement = item.enhancement + 1;
-  }
+    if (item.enhancement <= 20) {
+      item.enhancement = item.enhancement + 1;
+    }
   return { ...item };
-}
-;
+};
 
 function fail(item) {
+  console.log('Fail Item:', item);
+    if (item.enhancement < 15) {
+      item.durability -= 5;
+    }
+    if (item.enhancement >= 15) {
+      item.durability -= 10;
+    }
+    if (item.enhancement > 16) {
+      item.enhancement -= 1;
+    }
   return { ...item };
-}
+};
 
 function repair(item) {
   console.log('Repair Item:', item);
