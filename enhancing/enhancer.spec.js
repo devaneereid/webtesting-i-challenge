@@ -26,18 +26,22 @@ describe('enhancer.js', () => {
         });
     });
 
-    // Test fail(item)
-    describe('.fail(item)', () => {
-        it('returns a modified object', () => {
+     // Test fail(item)
+     describe('.fail(item)', () => {
+        it('returns an object that decreases by 5, when less than 15', () => {
             // If the item's enhancement is less than 15, the durability of the item is decreased by 5.
-            expect(fail({ enhancement: 12, durability: 12 }).durability).toEqual(7);
+            expect(fail({ enhancement: 12, durability: 12 }).durability).toBe(7);
+        });
 
+        it('returns an object that decreases by 10, when 15 or more', () => {
              // If the item's enhancement is 15 or more, the durability of the item is decreased by 10.
-            expect(fail({ enhancement: 15, durability: 10 }).durability).toEqual(0);
-
+            expect(fail({ enhancement: 15, durability: 10 }).durability).toBe(0);
+        });
+        
+        it('returns an object that decreases by 1, when enhancement level is 16 or greater', () => {
             // If the item's enhancement level is greater than 16, the enhancement level decreases by 1.
-            expect(fail({ enhancement: 18 }).enhancement).toEqual(17);
+            expect(fail({ enhancement: 18 }).enhancement).toBe(17);
         });
     });
-    
+
 });
