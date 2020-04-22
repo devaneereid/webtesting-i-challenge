@@ -6,8 +6,16 @@ module.exports = {
 };
 
 function succeed(item) {
+// The item's enhancement increases by 1.
+// If the item enhancement level is 20, the enhancement level is not changed.
+// The durability of the item is not changed.
+  console.log('Success Item:', item);
+  if (item.enhancement < 20) {
+    item.enhancement = item.enhancement + 1;
+  }
   return { ...item };
 }
+;
 
 function fail(item) {
   return { ...item };
